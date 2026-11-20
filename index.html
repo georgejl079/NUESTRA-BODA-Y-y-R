@@ -6,35 +6,35 @@
 <meta name="theme-color" content="#faf7f2">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Boda Y&H">
-<title>Yanneth & Henry | Nuestra Boda</title>
+<meta name="apple-mobile-web-app-title" content="Boda H&Y">
+<title>Henry & Yanneth | Nuestra Boda</title>
 
 <!-- ============================================================
      OPEN GRAPH — Vista previa al compartir en WhatsApp / redes
-     URLs configuradas para georgejl079/NUESTRA-BODA-Y-y-R
+     Vista previa para compartir en WhatsApp y redes
 ============================================================ -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Boda Yanneth & Henry">
-<meta property="og:title" content="Yanneth & Henry | Nuestra Boda">
+<meta property="og:site_name" content="Boda Henry & Yanneth">
+<meta property="og:title" content="Henry & Yanneth | Nuestra Boda">
 <meta property="og:description" content="19 de Diciembre de 2026 · Yacuiba, Bolivia · ¡Te esperamos para celebrar juntos este día tan especial!">
-<meta property="og:image" content="https://raw.githubusercontent.com/georgejl079/NUESTRA-BODA-Y-y-R/main/og-boda.jpg">
-<meta property="og:image:secure_url" content="https://raw.githubusercontent.com/georgejl079/NUESTRA-BODA-Y-y-R/main/og-boda.jpg">
+<meta property="og:image" content="https://georgejl079.github.io/NUESTRA-BODA-Y-y-R/og-boda.jpg">
+<meta property="og:image:secure_url" content="https://georgejl079.github.io/NUESTRA-BODA-Y-y-R/og-boda.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Invitación de boda de Yanneth y Henry">
+<meta property="og:image:alt" content="Invitación de boda de Henry y Yanneth">
 <meta property="og:url" content="https://georgejl079.github.io/NUESTRA-BODA-Y-y-R/">
 <meta property="og:locale" content="es_BO">
 
-<!-- Twitter Card -->
+<!-- Twitter Card (por si comparten por X/Twitter) -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Yanneth & Henry | Nuestra Boda">
+<meta name="twitter:title" content="Henry & Yanneth | Nuestra Boda">
 <meta name="twitter:description" content="19 de Diciembre de 2026 · Yacuiba, Bolivia · ¡Te esperamos!">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/georgejl079/NUESTRA-BODA-Y-y-R/main/og-boda.jpg">
+<meta name="twitter:image" content="https://georgejl079.github.io/NUESTRA-BODA-Y-y-R/og-boda.jpg">
 
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icono-192.png">
-<meta name="description" content="Invitación de boda de Yanneth y Henry - 19 de diciembre de 2026 - Yacuiba, Bolivia">
+<meta name="description" content="Invitación de boda de Henry y Yanneth - 19 de diciembre de 2026 - Yacuiba, Bolivia">
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
 <style>
@@ -69,9 +69,143 @@
     animation: bodyAppear 1.2s ease-out forwards;
   }
 
+  body.entry-locked { overflow: hidden; }
+
   @keyframes bodyAppear {
     from { opacity: 0; }
     to   { opacity: 1; }
+  }
+
+  .entry-cover {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    overflow-y: auto;
+    background:
+      radial-gradient(ellipse at 50% 35%, rgba(255,255,255,0.94), rgba(250,247,242,0.97) 55%, rgba(236,224,200,0.98)),
+      var(--cream);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+  }
+
+  .entry-cover.opened {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .entry-envelope {
+    width: min(440px, 100%);
+    padding: 14px;
+    background: linear-gradient(145deg, #eee4d4, #d9c7aa);
+    border: 1px solid rgba(201,168,106,0.55);
+    box-shadow: 0 24px 80px rgba(58,42,22,0.18);
+  }
+
+  .entry-paper {
+    position: relative;
+    display: flex;
+    min-height: 430px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 38px 24px;
+    overflow: hidden;
+    background: var(--cream);
+    border: 1px solid rgba(201,168,106,0.45);
+    text-align: center;
+  }
+
+  .entry-paper::before {
+    content: '';
+    position: absolute;
+    inset: 11px;
+    border: 1px solid rgba(201,168,106,0.3);
+    pointer-events: none;
+  }
+
+  .entry-monogram {
+    color: var(--gold);
+    font-family: 'Parisienne', cursive;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .entry-monogram span { color: var(--dark); }
+
+  .entry-divider {
+    width: 52px;
+    height: 1px;
+    margin: 20px auto;
+    background: var(--gold);
+  }
+
+  .entry-kicker {
+    color: var(--gold);
+    font-size: 0.58rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .entry-names {
+    margin: 8px 0;
+    color: var(--dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 9vw, 3rem);
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .entry-invitation {
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+
+  .entry-date {
+    margin-top: 12px;
+    color: var(--gold);
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+  }
+
+  .entry-open {
+    display: grid;
+    width: 76px;
+    height: 76px;
+    place-items: center;
+    margin: 23px 0 8px;
+    border: 2px solid rgba(255,255,255,0.72);
+    border-radius: 50%;
+    background: #b83d43;
+    box-shadow: 0 5px 16px rgba(112,29,34,0.28), inset 0 0 0 4px rgba(255,255,255,0.14);
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+
+  .entry-open:hover {
+    transform: scale(1.08);
+    background: #a83238;
+  }
+
+  .entry-open:focus-visible {
+    outline: 3px solid var(--dark);
+    outline-offset: 4px;
+  }
+
+  .entry-open svg { width: 30px; height: 30px; }
+
+  .entry-prompt {
+    color: #81796d;
+    font-size: 0.58rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
   }
 
   /* ============================================
@@ -157,6 +291,7 @@
     min-height: 640px;
     background:
       linear-gradient(rgba(28,26,23,0.32), rgba(28,26,23,0.62)),
+      url('portada.jpg') center/cover no-repeat,
       url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600') center/cover no-repeat;
     display: flex;
     flex-direction: column;
@@ -355,6 +490,73 @@
     letter-spacing: 1px;
   }
 
+  .verse-section {
+    padding: 64px 20px;
+    background: var(--cream-soft);
+    text-align: center;
+  }
+
+  .verse-divider {
+    width: 48px;
+    height: 1px;
+    margin: 0 auto 22px;
+    background: var(--gold);
+  }
+
+  .verse-text {
+    color: var(--dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.55rem, 4vw, 2.2rem);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .verse-reference {
+    margin-top: 18px;
+    color: var(--gold);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .invitation-message-section {
+    padding: 46px 20px 54px;
+    background: #e8dcc8;
+    text-align: center;
+  }
+
+  .invitation-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    color: var(--gold);
+  }
+
+  .invitation-divider::before,
+  .invitation-divider::after {
+    content: '';
+    width: 42px;
+    height: 1px;
+    background: var(--gold-soft);
+  }
+
+  .invitation-divider svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .invitation-message {
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.45rem, 3.8vw, 1.9rem);
+    line-height: 1.45;
+  }
+
   .section-subtitle {
     text-align: center;
     font-size: 0.65rem;
@@ -404,6 +606,99 @@
     width: 900px; height: 900px;
     background: radial-gradient(circle, rgba(201,168,106,0.05), transparent 60%);
     pointer-events: none;
+  }
+
+  .calendar-month {
+    margin: -2px 0 18px;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    text-align: center;
+  }
+
+  .calendar-card {
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 16px 14px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.04);
+    position: relative;
+    z-index: 1;
+  }
+
+  .calendar-grid {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .calendar-grid th {
+    height: 34px;
+    color: var(--gold);
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .calendar-grid td { height: 42px; }
+
+  .calendar-day {
+    position: relative;
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    margin: 0 auto;
+    color: var(--text);
+    font-size: 0.76rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .calendar-day svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: rgba(201,168,106,0.12);
+    stroke: var(--gold);
+    stroke-width: 1.2;
+  }
+
+  .calendar-day strong {
+    position: relative;
+    z-index: 1;
+    color: var(--dark);
+    font-weight: 600;
+  }
+
+  .calendar-callout {
+    display: flex;
+    width: min(380px, 100%);
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 8px auto 28px;
+    padding-right: 28px;
+    color: var(--gold);
+    font-family: 'Parisienne', cursive;
+    font-size: 1.45rem;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .calendar-callout svg {
+    width: 24px;
+    height: 44px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
   }
 
   .countdown {
@@ -485,6 +780,89 @@
     z-index: 1;
   }
 
+  .family-blessing {
+    padding: 76px 20px;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(201,168,106,0.07), transparent 55%),
+      var(--cream-soft);
+    text-align: center;
+  }
+
+  .family-blessing .container {
+    position: relative;
+    max-width: 700px;
+    padding: 44px clamp(22px, 6vw, 48px);
+    background: rgba(255,255,255,0.68);
+    border: 1px solid rgba(201,168,106,0.4);
+    box-shadow: 0 16px 45px rgba(58,42,22,0.06);
+  }
+
+  .family-blessing .container::before {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(201,168,106,0.2);
+    pointer-events: none;
+  }
+
+  .family-blessing-title {
+    margin-bottom: 22px;
+    color: var(--dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.55rem, 4vw, 2.15rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .family-blessing-title::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 1px;
+    margin: 16px auto 0;
+    background: var(--gold);
+  }
+
+  .family-parent-heading {
+    margin-bottom: 10px;
+    color: var(--gold);
+    font-size: 0.56rem;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  .family-parent-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .family-parent-name {
+    max-width: 100%;
+    color: var(--dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.25rem, 3.5vw, 1.7rem);
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .family-parent-connector {
+    margin: 3px 0;
+    color: var(--gold);
+    font-family: 'Parisienne', cursive;
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .family-parent-divider {
+    width: 64px;
+    height: 1px;
+    margin: 22px auto;
+    background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+  }
+
   /* ============================================
      VENUE
   ============================================ */
@@ -506,6 +884,7 @@
   .venue-hero {
     background:
       linear-gradient(rgba(28,26,23,0.55), rgba(28,26,23,0.75)),
+      url('lugar.jpg') center/cover no-repeat,
       url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200') center/cover no-repeat;
     color: #fff;
     padding: 55px 30px;
@@ -665,10 +1044,9 @@
 
   .venue-map {
     width: 100%;
-    height: 250px;
+    height: auto;
     border: none;
     display: block;
-    filter: grayscale(0.2) contrast(0.95);
   }
 
   .venue-actions {
@@ -1051,13 +1429,33 @@
 </head>
 <body>
 
+<!-- ===== CARTA DE BIENVENIDA ===== -->
+<div class="entry-cover" id="entryCover" role="dialog" aria-modal="true" aria-labelledby="entryTitle">
+  <div class="entry-envelope">
+    <div class="entry-paper">
+      <p class="entry-monogram">H <span>&</span> Y</p>
+      <div class="entry-divider"></div>
+      <p class="entry-kicker">Con mucho amor</p>
+      <h1 class="entry-names" id="entryTitle">Henry & Yanneth</h1>
+      <p class="entry-invitation">te invitan a celebrar su boda</p>
+      <p class="entry-date">19 · DICIEMBRE · 2026</p>
+      <button class="entry-open" id="entryOpen" type="button" aria-label="Abrir invitación y reproducir música">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
+        </svg>
+      </button>
+      <p class="entry-prompt">Presiona el sello para abrir</p>
+    </div>
+  </div>
+</div>
+
 <!-- ===== PÉTALOS FLOTANTES ===== -->
 <div class="petals" id="petals"></div>
 
 <!-- ===== NAVEGACIÓN ESCRITORIO ===== -->
 <nav class="nav">
   <a href="#inicio">Inicio</a>
-  <a href="#cuenta">Cuenta Regresiva</a>
+  <a href="#cuenta">Fecha</a>
   <a href="#detalles">El Lugar</a>
   <a href="#galeria">Galería</a>
 </nav>
@@ -1066,9 +1464,9 @@
 <header class="hero" id="inicio">
   <div class="hero-frame"></div>
   <div class="hero-content">
-    <p class="hero-monogram">Y & H</p>
+    <p class="hero-monogram">H & Y</p>
     <p class="hero-subtitle">Nos casamos</p>
-    <h1 class="hero-names">Yanneth <span class="amp">&</span> Henry</h1>
+    <h1 class="hero-names">Henry <span class="amp">&</span> Yanneth</h1>
     <p class="hero-date">19 · DICIEMBRE · 2026</p>
     <p class="hero-location">Yacuiba · Bolivia</p>
   </div>
@@ -1078,14 +1476,107 @@
   </div>
 </header>
 
+<section class="verse-section" aria-label="Frase de la invitación">
+  <div class="container">
+    <div class="verse-divider"></div>
+    <p class="verse-text">Dios nos unió con propósito y<br>caminaremos juntos por la eternidad.</p>
+    <p class="verse-reference">1 Corintios 13:4-7</p>
+  </div>
+</section>
+
+<section class="invitation-message-section" aria-label="Invitación a la celebración">
+  <div class="container">
+    <div class="invitation-divider" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
+      </svg>
+    </div>
+    <p class="invitation-message">Con mucha ilusión, te invitamos a formar parte de nuestra celebración.</p>
+  </div>
+</section>
+
 <!-- ===== CUENTA REGRESIVA ===== -->
 <section class="countdown-section" id="cuenta">
   <div class="container">
-    <h2 class="section-title">Cuenta Regresiva</h2>
-    <p class="section-subtitle">Falta poco para el gran día</p>
-    <div class="section-divider">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-        <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
+    <h2 class="section-title">FECHA</h2>
+    <p class="calendar-month">Diciembre - 2026</p>
+    <div class="calendar-card">
+      <table class="calendar-grid" aria-label="Calendario de diciembre de 2026">
+        <thead>
+          <tr>
+            <th scope="col" abbr="Domingo">Dom</th>
+            <th scope="col" abbr="Lunes">Lun</th>
+            <th scope="col" abbr="Martes">Mar</th>
+            <th scope="col" abbr="Miércoles">Mié</th>
+            <th scope="col" abbr="Jueves">Jue</th>
+            <th scope="col" abbr="Viernes">Vie</th>
+            <th scope="col" abbr="Sábado">Sáb</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td aria-hidden="true"></td>
+            <td aria-hidden="true"></td>
+            <td><span class="calendar-day">1</span></td>
+            <td><span class="calendar-day">2</span></td>
+            <td><span class="calendar-day">3</span></td>
+            <td><span class="calendar-day">4</span></td>
+            <td><span class="calendar-day">5</span></td>
+          </tr>
+          <tr>
+            <td><span class="calendar-day">6</span></td>
+            <td><span class="calendar-day">7</span></td>
+            <td><span class="calendar-day">8</span></td>
+            <td><span class="calendar-day">9</span></td>
+            <td><span class="calendar-day">10</span></td>
+            <td><span class="calendar-day">11</span></td>
+            <td><span class="calendar-day">12</span></td>
+          </tr>
+          <tr>
+            <td><span class="calendar-day">13</span></td>
+            <td><span class="calendar-day">14</span></td>
+            <td><span class="calendar-day">15</span></td>
+            <td><span class="calendar-day">16</span></td>
+            <td><span class="calendar-day">17</span></td>
+            <td><span class="calendar-day">18</span></td>
+            <td>
+              <span class="calendar-day" aria-label="19 de diciembre, nuestro día">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
+                </svg>
+                <strong>19</strong>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="calendar-day">20</span></td>
+            <td><span class="calendar-day">21</span></td>
+            <td><span class="calendar-day">22</span></td>
+            <td><span class="calendar-day">23</span></td>
+            <td><span class="calendar-day">24</span></td>
+            <td><span class="calendar-day">25</span></td>
+            <td><span class="calendar-day">26</span></td>
+          </tr>
+          <tr>
+            <td><span class="calendar-day">27</span></td>
+            <td><span class="calendar-day">28</span></td>
+            <td><span class="calendar-day">29</span></td>
+            <td><span class="calendar-day">30</span></td>
+            <td><span class="calendar-day">31</span></td>
+            <td aria-hidden="true"></td>
+            <td aria-hidden="true"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="calendar-callout">
+      <span>Nuestro Día</span>
+      <svg viewBox="0 0 24 44" aria-hidden="true">
+        <g transform="rotate(180 12 12)">
+          <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
+        </g>
+        <path d="M12 22v20"/>
       </svg>
     </div>
 
@@ -1119,7 +1610,26 @@
       </div>
     </div>
 
-    <p class="countdown-date-note">19 de Diciembre de 2026 · 4:50 PM</p>
+    <p class="countdown-date-note">19 de Diciembre de 2026 · 19:00</p>
+  </div>
+</section>
+
+<section class="family-blessing" aria-labelledby="familyBlessingTitle">
+  <div class="container">
+    <h2 class="family-blessing-title" id="familyBlessingTitle">Con la Bendición de Dios y Nuestros Padres:</h2>
+    <div class="family-parent-group">
+      <h3 class="family-parent-heading">Padres del novio</h3>
+      <p class="family-parent-name">Marcelino Ramirez Veizaga</p>
+      <p class="family-parent-connector">y</p>
+      <p class="family-parent-name">Lidia Panozo Soliz</p>
+    </div>
+    <div class="family-parent-divider"></div>
+    <div class="family-parent-group">
+      <h3 class="family-parent-heading">Padres de la novia</h3>
+      <p class="family-parent-name">Diego Choque Villca</p>
+      <p class="family-parent-connector">y</p>
+      <p class="family-parent-name">Vicenta Chambi Lupinta</p>
+    </div>
   </div>
 </section>
 
@@ -1158,7 +1668,7 @@
           <div class="venue-row-content">
             <p class="venue-row-label">Dirección</p>
             <p class="venue-row-value">
-              Calle Eustaquio Méndez, entre Pasaje Tapieti
+              Calle Eustaquio Méndez entre Calle Bolívar
               <small>Yacuiba, Tarija · Bolivia</small>
             </p>
           </div>
@@ -1174,8 +1684,8 @@
           <div class="venue-row-content">
             <p class="venue-row-label">Horario</p>
             <p class="venue-row-value">
-              Ceremonia 4:50 PM · Fiesta a continuación
-              <small>Recepción de invitados a partir de las 4:30 PM</small>
+              Ceremonia a partir de las 19:00 · Fiesta a continuación
+              <small>Recepción de invitados a partir de las 19:00</small>
             </p>
           </div>
         </div>
@@ -1191,7 +1701,7 @@
             </svg>
           </span>
           <p class="event-name">Ceremonia Civil</p>
-          <p class="event-time">4:50 PM</p>
+          <p class="event-time">19:00</p>
         </div>
         <div class="venue-event">
           <span class="event-icon">
@@ -1204,24 +1714,16 @@
         </div>
       </div>
 
-      <iframe class="venue-map"
-        src="https://www.google.com/maps?q=Calle+Eustaquio+Mendez,+Yacuiba,+Bolivia&output=embed"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+      <img class="venue-map" src="ubicacion.jpg"
+        alt="Mapa de la ubicación con una flecha que señala Nuestra Boda"
+        loading="lazy">
 
       <div class="venue-actions">
-        <a href="https://maps.google.com/?q=Calle+Eustaquio+Mendez,+Yacuiba,+Bolivia" target="_blank" rel="noopener" class="btn btn-primary">
+        <a href="https://maps.app.goo.gl/1TLKCa9pBbcyqAYL8" target="_blank" rel="noopener" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
           </svg>
           Cómo llegar
-        </a>
-        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Yanneth+%26+Henry&dates=20261219T165000/20261220T020000&location=Calle+Eustaquio+Mendez,+Yacuiba,+Bolivia" target="_blank" rel="noopener" class="btn btn-outline">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="5" width="18" height="16" rx="2"/>
-            <path d="M3 9h18M8 3v4M16 3v4"/>
-          </svg>
-          Agendar
         </a>
       </div>
     </div>
@@ -1242,12 +1744,12 @@
     </div>
 
     <div class="gallery">
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000" alt="Pareja 1" loading="lazy"></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" alt="Pareja 2" loading="lazy"></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800" alt="Pareja 3" loading="lazy"></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800" alt="Pareja 4" loading="lazy"></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800" alt="Pareja 5" loading="lazy"></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=1000" alt="Pareja 6" loading="lazy"></div>
+      <div class="gallery-item"><img src="galeria-1.jpg" data-fallback="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000" alt="Pareja 1" loading="lazy"></div>
+      <div class="gallery-item"><img src="galeria-2.jpg" data-fallback="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" alt="Pareja 2" loading="lazy"></div>
+      <div class="gallery-item"><img src="galeria-3.jpg" data-fallback="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800" alt="Pareja 3" loading="lazy"></div>
+      <div class="gallery-item"><img src="galeria-4.jpg" data-fallback="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800" alt="Pareja 4" loading="lazy"></div>
+      <div class="gallery-item"><img src="galeria-5.jpg" data-fallback="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800" alt="Pareja 5" loading="lazy"></div>
+      <div class="gallery-item"><img src="galeria-6.jpg" data-fallback="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=1000" alt="Pareja 6" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -1256,13 +1758,13 @@
 <section class="quote-section">
   <span class="quote-mark">"</span>
   <p class="quote-text">Y así, después de todo este tiempo, sigo eligiéndote. Hoy, mañana y siempre.</p>
-  <p class="quote-author">Yanneth & Henry</p>
+  <p class="quote-author">Henry & Yanneth</p>
 </section>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
-  <p class="footer-monogram">Y & H</p>
-  <p class="footer-names">Yanneth & Henry</p>
+  <p class="footer-monogram">H & Y</p>
+  <p class="footer-names">Henry & Yanneth</p>
   <p class="footer-text">19 · Diciembre · 2026 · Yacuiba</p>
   <p class="footer-sub">¡Te esperamos para celebrar juntos este día tan especial!</p>
 </footer>
@@ -1284,7 +1786,7 @@
         <path d="M12 7v5l3 2"/>
       </svg>
     </span>
-    Cuenta
+    Fecha
   </a>
   <a href="#detalles">
     <span class="app-icon">
@@ -1326,10 +1828,20 @@
 </audio>
 
 <script>
+  document.body.classList.add('entry-locked');
+
+  document.querySelectorAll('.gallery-item img[data-fallback]').forEach((image) => {
+    const fallback = image.dataset.fallback;
+    image.addEventListener('error', () => {
+      image.removeAttribute('data-fallback');
+      image.src = fallback;
+    }, { once: true });
+  });
+
   // ============================================================
-  // FECHA: 19 de Diciembre de 2026, 4:50 PM
+  // Hora local de Yacuiba (UTC-4): 19 de diciembre de 2026, 19:00
   // ============================================================
-  const weddingDate = new Date(2026, 11, 19, 16, 50, 0).getTime();
+  const weddingDate = new Date('2026-12-19T19:00:00-04:00').getTime();
   const pad = (n) => String(n).padStart(2, '0');
 
   function updateCountdown() {
@@ -1395,59 +1907,50 @@
   sections.forEach(s => observer.observe(s));
 
   // ============================================================
-  // MÚSICA — Autoplay con fallback + hint
+  // MÚSICA
   // ============================================================
+  const entryCover = document.getElementById('entryCover');
+  const entryOpen = document.getElementById('entryOpen');
   const musicBtn = document.getElementById('musicBtn');
   const bgMusic = document.getElementById('bgMusic');
   const musicHint = document.getElementById('musicHint');
-  let isPlaying = false;
 
-  function tryAutoplay() {
+  function startMusic() {
     bgMusic.volume = 0.35;
     const playPromise = bgMusic.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
-        isPlaying = true;
         musicBtn.classList.add('playing');
+        musicBtn.setAttribute('aria-label', 'Pausar música de fondo');
+        musicHint.classList.remove('show');
       }).catch(() => {
-        setTimeout(() => musicHint.classList.add('show'), 2000);
-        setTimeout(() => musicHint.classList.remove('show'), 8000);
+        musicBtn.classList.remove('playing');
+        musicBtn.setAttribute('aria-label', 'Reproducir música de fondo');
+        musicHint.textContent = 'No se pudo reproducir la música. Revisa el archivo musica.mp3.';
+        musicHint.classList.add('show');
       });
+    } else {
+      musicBtn.classList.add('playing');
+      musicBtn.setAttribute('aria-label', 'Pausar música de fondo');
     }
   }
 
-  if (document.readyState === 'complete') {
-    tryAutoplay();
-  } else {
-    window.addEventListener('load', tryAutoplay);
-  }
+  entryOpen.addEventListener('click', () => {
+    entryCover.classList.add('opened');
+    document.body.classList.remove('entry-locked');
+    startMusic();
+  });
 
   musicBtn.addEventListener('click', () => {
     musicHint.classList.remove('show');
-    if (isPlaying) {
+    if (!bgMusic.paused) {
       bgMusic.pause();
       musicBtn.classList.remove('playing');
-      isPlaying = false;
+      musicBtn.setAttribute('aria-label', 'Reproducir música de fondo');
     } else {
-      bgMusic.volume = 0.35;
-      bgMusic.play().then(() => {
-        musicBtn.classList.add('playing');
-        isPlaying = true;
-      }).catch(() => {
-        musicBtn.classList.remove('playing');
-        isPlaying = false;
-      });
+      startMusic();
     }
   });
-
-  function unlockAudio() {
-    bgMusic.play().then(() => {
-      bgMusic.pause();
-      bgMusic.currentTime = 0;
-      document.removeEventListener('touchstart', unlockAudio);
-    }).catch(() => {});
-  }
-  document.addEventListener('touchstart', unlockAudio, { once: true });
 
   // ============================================================
   // SERVICE WORKER
