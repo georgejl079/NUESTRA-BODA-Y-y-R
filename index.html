@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#faf7f2">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -53,7 +53,8 @@
     --shadow: 0 10px 40px rgba(0,0,0,0.05);
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; touch-action: manipulation; }
+  img { touch-action: manipulation; }
 
   /* ============================================
      APARICIÓN AL INGRESAR
@@ -1961,7 +1962,15 @@
         .then(reg => console.log('SW registrado:', reg.scope))
         .catch(err => console.log('SW error:', err));
     });
-  }
+  document.addEventListener('gesturestart', e => e.preventDefault());
+  document.addEventListener('gesturechange', e => e.preventDefault());
+  document.addEventListener('gestureend', e => e.preventDefault());
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', e => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) e.preventDefault();
+    lastTouchEnd = now;
+  }, { passive: false });
 </script>
 
 </body>
