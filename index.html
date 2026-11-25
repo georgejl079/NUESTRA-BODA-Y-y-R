@@ -1440,7 +1440,7 @@
       <h1 class="entry-names" id="entryTitle">Henry & Yanneth</h1>
       <p class="entry-invitation">te invitan a celebrar su boda</p>
       <p class="entry-date">19 · DICIEMBRE · 2026</p>
-      <button class="entry-open" id="entryOpen" type="button" aria-label="Abrir invitación y reproducir música">
+      <button class="entry-open" id="entryOpen" type="button" aria-label="Abrir invitación y reproducir música" onclick="document.getElementById('entryCover').classList.add('opened'); document.body.classList.remove('entry-locked'); var a=document.getElementById('bgMusic'); if(a){a.volume=0.35; a.play().catch(function(){});} document.getElementById('musicBtn').classList.add('playing');">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
         </svg>
@@ -1962,9 +1962,22 @@
         .then(reg => console.log('SW registrado:', reg.scope))
         .catch(err => console.log('SW error:', err));
     });
-  document.addEventListener('gesturestart', e => e.preventDefault());
-  document.addEventListener('gesturechange', e => e.preventDefault());
-  document.addEventListener('gestureend', e => e.preventDefault());
+  }
+  // ============================================================
+  // BLOQUEO DE ZOOM (pinch, doble toque) para no desordenar la tarjeta
+  // ============================================================
+  ['gesturestart', 'gesturechange', 'gestureend'].forEach(evt => {
+    document.addEventListener(evt, e => e.preventDefault(), { passive: false });
+  });
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', e => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 350) e.preventDefault();
+    lastTouchEnd = now;
+  }, { passive: false });
+  document.addEventListener('touchmove', e => {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
 </script>
 
 </body>
